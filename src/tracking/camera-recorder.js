@@ -3,6 +3,18 @@
 
 import { detectFrame, startRun } from './pose-tracker.js';
 
+export async function requestCameraPermission() {
+  if (!navigator.mediaDevices?.getUserMedia) {
+    throw new Error('The camera needs a secure page (https:// or localhost).');
+  }
+  const stream = await navigator.mediaDevices.getUserMedia({
+    video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } },
+    audio: false,
+  });
+  // Immediately release camera tracks after confirming permission
+  stream.getTracks().forEach((track) => track.stop());
+}
+
 export async function openCamera(video) {
   if (!navigator.mediaDevices?.getUserMedia) {
     throw new Error('The camera needs a secure page (https:// or localhost).');

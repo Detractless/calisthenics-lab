@@ -1,5 +1,6 @@
-// Wires the page together: allow the camera, record a set, count reps, show
-// the results, download the landmarks CSV.
+// Wires the page together: request camera permission, show instructions dialog,
+// start camera and tracking only on "Begin recording", record a set, count reps,
+// show results, download CSV and share with Supabase.
 
 import { DEFAULT_EXERCISE, EXERCISES } from '../reps/exercises.js';
 import { countReps } from '../reps/rep-counter.js';
@@ -10,6 +11,7 @@ import { MAX_RECORDING_MS, openTrackingSession } from './camera-session.js';
 import { createExerciseMenu } from './exercise-menu.js';
 import { uploadRecording } from './supabase-client.js';
 import { createSkeletonAnimation } from './skeleton-animation.js';
+import { requestCameraPermission } from '../tracking/camera-recorder.js';
 
 export const MIN_RECORDING_MS = 10 * 1000;
 
@@ -39,8 +41,9 @@ const CAMERA_ERRORS = {
 // disappears and the center dialog asks to begin recording.
 const PRIMARY_BUTTON = {
   off: { text: 'Allow camera to track body position', className: 'primary', visible: true },
-  starting: { text: 'Starting camera…', className: 'primary', disabled: true, visible: true },
+  checking: { text: 'Checking permission…', className: 'primary', disabled: true, visible: true },
   ready: { text: 'Record', className: 'primary is-record', visible: false },
+  starting: { text: 'Starting camera…', className: 'primary', disabled: true, visible: true },
   countdown: { text: 'Cancel', className: 'primary', visible: true },
   recording: { text: 'Stop', className: 'primary is-stop', visible: true },
 };
@@ -119,24 +122,20 @@ function endSession(message) {
   if (message) setStatus(message);
 }
 
-// ---- Camera ----
-
-async function startCamera() {
+// Step 1: Initial permission check. Only requests permission, then releases
+// the camera immediately. Does NOT keep camera active or start tracking.
+async function checkCameraPermission() {
   hideResults();
   frames = [];
   setStatus('');
-  setStage('starting');
+  setStage('checking');
   try {
-    session = await openTrackingSession(video, handleLiveFrame);
+    await requestCameraPermission();
   } catch (error) {
     setStage('off');
-    setStatus(CAMERA_ERRORS[error.name] ?? `Could not start the camera: ${error.message}`);
+    setStatus(CAMERA_ERRORS[error.name] ?? `Camera permission required: ${error.message}`);
     return;
   }
-  session.failure.catch((error) => {
-    stopRecording?.();
-    endSession(`Tracking stopped: ${error.message}`);
-  });
   setStage('ready');
 }
 
@@ -165,11 +164,27 @@ function showCountdown(left) {
   showLive(liveExercise.measure ? '0 reps' : '0:00');
 }
 
-// ---- Recording ----
-
-async function record() {
+// Step 2: "Begin recording" opens the camera and tracking session,
+// then immediately starts the countdown and recording.
+async function startAndRecord() {
   readyDialog.hidden = true;
   previewAnim?.stop();
+  setStage('starting');
+  setStatus('Starting camera & tracking…');
+
+  try {
+    session = await openTrackingSession(video, handleLiveFrame);
+  } catch (error) {
+    setStage('ready');
+    setStatus(CAMERA_ERRORS[error.name] ?? `Could not start the camera: ${error.message}`);
+    return;
+  }
+
+  session.failure.catch((error) => {
+    stopRecording?.();
+    endSession(`Tracking stopped: ${error.message}`);
+  });
+
   const key = menu.value();
   liveExercise = EXERCISES[key];
   liveSamples = [];
@@ -187,6 +202,10 @@ async function record() {
   }
   if (!session) return; // tracking broke and the page already reset itself
   if (outcome.reason === 'cancelled') {
+    // If cancelled during countdown, shut off camera and return to ready dialog
+    session.close();
+    session = null;
+    drawSkeleton(overlay, null);
     setStage('ready');
     setStatus('Cancelled. Nothing was saved.');
     return;
@@ -268,7 +287,7 @@ function applyCustomExerciseName() {
 // ---- Controls ----
 
 primary.addEventListener('click', () => {
-  if (stage === 'off') startCamera();
+  if (stage === 'off') checkCameraPermission();
   else if (stage === 'countdown' || stage === 'recording') stopRecording?.();
 });
 
@@ -280,7 +299,7 @@ readyDialogClose?.addEventListener('click', () => {
 });
 
 beginRecordingBtn?.addEventListener('click', () => {
-  record();
+  startAndRecord();
 });
 
 saveCustomExerciseBtn?.addEventListener('click', applyCustomExerciseName);
