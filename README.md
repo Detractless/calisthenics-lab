@@ -1,4 +1,4 @@
-# Rep tracker
+# Calisthenics Lab
 
 Browser-only rep counter for squats, push-ups and pull-ups. MediaPipe Pose
 Landmarker tracks the body on your device. The camera picture is never shown,
