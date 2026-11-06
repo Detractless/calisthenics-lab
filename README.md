@@ -12,17 +12,23 @@ npm test         # rep-counter, elbow-angle and knee-angle tests (Node 20+)
 ```
 
 1. Press **Allow camera to track body position** (top centre).
-2. Pick the exercise in the dropdown at the top right (default Squat).
-3. Press **Record**, get in position during the 3-second countdown, do your
-   set, press **Stop**. Cancel during the countdown to go back.
+2. The dialog appears explaining tracking privacy and instructions. Pick your exercise in the dropdown at the top right (default Squat) or pick **+ Other**.
+3. Press **Begin recording**, get in position during the 3-second countdown, do your
+   set, press **Stop**.
 4. The camera turns off, the rep count appears in a glass panel, and a
-   landmarks CSV downloads.
+   landmarks CSV downloads and is shared with the community library in Supabase.
 
 Recording stops by itself after 3 minutes. The camera needs `localhost` or
 `https://` (GitHub Pages is fine). Keep your whole body in view.
 
 **+ Other** is for any exercise not in the list: it records the CSV only and
-counts nothing.
+lets you name the exercise at the end of the set.
+
+## Database & Supabase setup
+
+Anonymous workout coordinate recordings are stored in Supabase:
+- Run the SQL in `supabase/schema.sql` inside the Supabase SQL editor to create the `recordings` table with Row Level Security (RLS) enabled.
+- Anonymous visitors can insert new recordings, but cannot read or delete existing submissions.
 
 ## How a rep is counted
 
@@ -46,18 +52,9 @@ eye, ear and mouth points are left out. The nose is kept.
 
 - `src/tracking/` MediaPipe, camera access, joint angles
 - `src/reps/` exercise list and rep counting
-- `src/page/` the page: wiring, camera session, dropdown, results, skeleton, CSV
+- `src/page/` the page: wiring, camera session, dropdown, results, skeleton, CSV, Supabase
+- `supabase/` database schema and RLS policies
 - `tests/` Node tests for the counting and angle maths
-
-`trackVideo` in `src/tracking/pose-tracker.js` can still analyze a video file
-frame by frame (no page uses it now); it is meant for testing against
-human-labeled clips.
-
-## Next phases
-
-- Supabase: optional "share this recording" upload and a personal library.
-- On-demand Claude review of `review` / `partial` reps (owner-triggered GitHub
-  Action or local Claude Code), reading the CSVs.
 
 ## License
 

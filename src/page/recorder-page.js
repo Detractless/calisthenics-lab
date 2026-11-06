@@ -8,6 +8,7 @@ import { downloadCsv, framesToCsv } from './csv-export.js';
 import { hideResults, redrawChart, showRecordingOnly, showResults } from './results-panel.js';
 import { MAX_RECORDING_MS, openTrackingSession } from './camera-session.js';
 import { createExerciseMenu } from './exercise-menu.js';
+import { uploadRecording } from './supabase-client.js';
 
 const $ = (id) => document.getElementById(id);
 const video = $('video');
@@ -193,12 +194,33 @@ function finishRecording({ frames: recorded, reason }, key) {
   frames = recorded;
   savedExercise = key;
   const exercise = EXERCISES[key];
+  const durationMs = frames[frames.length - 1].timeMs;
+  const landmarksCsv = framesToCsv(frames);
+
   if (exercise.measure) {
-    showResults(frames.map((f) => toSample(f, exercise)), exercise);
+    const summary = showResults(frames.map((f) => toSample(f, exercise)), exercise);
     saveCsv(savedExercise);
+    uploadRecording({
+      exercise: savedExercise,
+      durationMs,
+      repsCounted: summary?.counted ?? 0,
+      repsValid: summary?.valid ?? 0,
+      repsReview: summary?.review ?? 0,
+      repsPartial: summary?.partial ?? 0,
+      landmarksCsv,
+    });
   } else {
-    showRecordingOnly(frames[frames.length - 1].timeMs);
+    showRecordingOnly(durationMs);
     saveCsv(savedExercise);
+    uploadRecording({
+      exercise: savedExercise,
+      durationMs,
+      repsCounted: 0,
+      repsValid: 0,
+      repsReview: 0,
+      repsPartial: 0,
+      landmarksCsv,
+    });
   }
 
   const notes = ['CSV downloaded.'];
@@ -214,7 +236,18 @@ function applyCustomExerciseName() {
   savedExercise = slugify(name);
   $('headline-label').textContent = `recorded (${name})`;
   saveCsv(savedExercise);
-  setStatus(`Exercise saved as "${name}". Updated CSV downloaded.`);
+  if (frames.length > 0) {
+    uploadRecording({
+      exercise: savedExercise,
+      durationMs: frames[frames.length - 1].timeMs,
+      repsCounted: 0,
+      repsValid: 0,
+      repsReview: 0,
+      repsPartial: 0,
+      landmarksCsv: framesToCsv(frames),
+    });
+  }
+  setStatus(`Exercise saved as "${name}". Updated CSV downloaded & shared.`);
 }
 
 // ---- Controls ----
