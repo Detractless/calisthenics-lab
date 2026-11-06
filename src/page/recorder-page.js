@@ -9,6 +9,9 @@ import { hideResults, redrawChart, showRecordingOnly, showResults } from './resu
 import { MAX_RECORDING_MS, openTrackingSession } from './camera-session.js';
 import { createExerciseMenu } from './exercise-menu.js';
 import { uploadRecording } from './supabase-client.js';
+import { createSkeletonAnimation } from './skeleton-animation.js';
+
+export const MIN_RECORDING_MS = 10 * 1000;
 
 const $ = (id) => document.getElementById(id);
 const video = $('video');
@@ -18,10 +21,13 @@ const primary = $('primary');
 const readyDialog = $('ready-dialog');
 const readyDialogClose = $('ready-dialog-close');
 const beginRecordingBtn = $('begin-recording');
+const skeletonPreviewCanvas = $('skeleton-preview');
 const customExerciseInput = $('custom-exercise-input');
 const saveCustomExerciseBtn = $('save-custom-exercise');
 const live = $('live');
 const statusText = $('status');
+
+const previewAnim = skeletonPreviewCanvas ? createSkeletonAnimation(skeletonPreviewCanvas) : null;
 
 const CAMERA_ERRORS = {
   NotAllowedError: 'Camera permission was blocked. Allow the camera in your browser, then try again.',
@@ -69,8 +75,10 @@ function setStage(next) {
 
   if (next === 'ready') {
     readyDialog.hidden = false;
+    previewAnim?.start();
   } else {
     readyDialog.hidden = true;
+    previewAnim?.stop();
   }
 }
 
@@ -106,6 +114,7 @@ function endSession(message) {
   stopRecording = null;
   drawSkeleton(overlay, null);
   readyDialog.hidden = true;
+  previewAnim?.stop();
   setStage('off');
   if (message) setStatus(message);
 }
@@ -160,6 +169,7 @@ function showCountdown(left) {
 
 async function record() {
   readyDialog.hidden = true;
+  previewAnim?.stop();
   const key = menu.value();
   liveExercise = EXERCISES[key];
   liveSamples = [];
@@ -191,10 +201,15 @@ function finishRecording({ frames: recorded, reason }, key) {
     setStatus('Nothing was recorded.');
     return;
   }
+  const durationMs = recorded[recorded.length - 1].timeMs;
+  if (durationMs < MIN_RECORDING_MS) {
+    setStatus('Recording was under 10 seconds. Sets must be at least 10 seconds; nothing was saved.');
+    return;
+  }
+
   frames = recorded;
   savedExercise = key;
   const exercise = EXERCISES[key];
-  const durationMs = frames[frames.length - 1].timeMs;
   const landmarksCsv = framesToCsv(frames);
 
   if (exercise.measure) {
@@ -254,14 +269,14 @@ function applyCustomExerciseName() {
 
 primary.addEventListener('click', () => {
   if (stage === 'off') startCamera();
-  else if (stage === 'ready') record();
   else if (stage === 'countdown' || stage === 'recording') stopRecording?.();
 });
 
+// Exit button takes user completely back to beginning ("Allow camera...")
 readyDialogClose?.addEventListener('click', () => {
-  readyDialog.hidden = true;
-  if (primaryControl) primaryControl.hidden = false;
-  setStatus('Step back so your whole body is in view, then press Record.');
+  previewAnim?.stop();
+  endSession();
+  setStatus('');
 });
 
 beginRecordingBtn?.addEventListener('click', () => {

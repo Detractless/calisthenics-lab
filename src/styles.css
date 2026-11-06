@@ -136,19 +136,20 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dialog-text strong {
   color: #fff;
 }
-.dialog-tip {
-  margin: 0 0 24px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
+.skeleton-preview-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 14px 0 22px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.24);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.5;
-  text-align: left;
+  border-radius: 14px;
 }
-.dialog-tip p {
-  margin: 4px 0;
+#skeleton-preview {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 .dialog-actions {
   display: flex;

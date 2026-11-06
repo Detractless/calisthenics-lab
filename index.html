@@ -29,9 +29,8 @@
       <p class="dialog-text">
         This app only records and keeps <strong>skeletal position</strong> while doing an exercise. It never saves or keeps any video or photos of your face or room.
       </p>
-      <div class="dialog-tip">
-        <p>• You can change the exercise you're tracking in the corner, or leave it at the default.</p>
-        <p>• If your exercise isn't found, select <strong>+ Other</strong>. When you end the session, you'll be able to name the exercise you did.</p>
+      <div class="skeleton-preview-box">
+        <canvas id="skeleton-preview" width="280" height="120"></canvas>
       </div>
       <div class="dialog-actions">
         <button type="button" id="begin-recording" class="primary-action">Begin recording</button>
@@ -44,7 +43,7 @@
 
   <section class="glass results" id="results" hidden>
     <button type="button" class="close" id="results-close" aria-label="Close results">×</button>
-    <div class="headline"><strong id=\"headline-value\">0</strong> <span id=\"headline-label\">reps</span></div>
+    <div class="headline"><strong id="headline-value">0</strong> <span id="headline-label">reps</span></div>
     <div id="rep-details">
       <div class="stats">
         <div><strong id="stat-valid">0</strong><span>Valid</span></div>
