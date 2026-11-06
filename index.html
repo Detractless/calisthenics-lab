@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rep tracker</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <!-- The camera picture goes here and nowhere else: it is never shown. -->
+  <video id="video" class="camera-feed" playsinline muted></video>
+  <canvas id="overlay"></canvas>
+
+  <header class="top-bar">
+    <div class="glass control">
+      <button id="primary" class="primary">Allow camera to track body position</button>
+    </div>
+    <div class="menu" id="exercise-menu">
+      <button type="button" class="glass menu-button" aria-haspopup="menu" aria-expanded="false" aria-label="Exercise"></button>
+      <ul class="glass menu-list" role="menu" hidden></ul>
+    </div>
+  </header>
+
+  <div class="live" id="live" hidden></div>
+  <p class="glass status" id="status" role="status" hidden></p>
+
+  <section class="glass results" id="results" hidden>
+    <button type="button" class="close" id="results-close" aria-label="Close results">×</button>
+    <div class="headline"><strong id="headline-value">0</strong> <span id="headline-label">reps</span></div>
+    <div id="rep-details">
+      <div class="stats">
+        <div><strong id="stat-valid">0</strong><span>Valid</span></div>
+        <div><strong id="stat-review">0</strong><span>Review</span></div>
+        <div><strong id="stat-partial">0</strong><span>Partial</span></div>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Time</th><th>Lowest angle</th><th>Status</th></tr></thead>
+        <tbody id="rep-rows"></tbody>
+      </table>
+      <canvas id="angle-chart"></canvas>
+    </div>
+    <button type="button" id="download" class="secondary">Download CSV again</button>
+  </section>
+
+  <script type="module" src="src/page/recorder-page.js"></script>
+</body>
+</html>

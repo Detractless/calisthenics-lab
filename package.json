@@ -1,0 +1,12 @@
+{
+  "name": "calisthenics-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser-only pull-up / push-up rep counter using MediaPipe pose tracking",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 bin/dev_server.py",
+    "test": "node --test"
+  }
+}
