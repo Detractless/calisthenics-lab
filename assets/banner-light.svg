@@ -1,165 +1,215 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="1200" height="480">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520">
   <defs>
-    <!-- Background Canvas Gradients -->
-    <radialGradient id="bgGlowLight" cx="50%" cy="10%" r="70%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+    <!-- Background Canvas Gradients (Light theme) -->
+    <radialGradient id="bgGlowLight1" cx="20%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
       <stop offset="100%" stop-color="transparent"/>
     </radialGradient>
     <linearGradient id="bgGradLight" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#f5f5f7"/>
-      <stop offset="100%" stop-color="#e8e9ed"/>
+      <stop offset="0%" stop-color="#f3f4f6"/>
+      <stop offset="100%" stop-color="#e5e7eb"/>
     </linearGradient>
 
-    <!-- Browser Window Background -->
-    <linearGradient id="winGradLight" x1="0" y1="0" x2="0" y2="1">
+    <!-- Glass & Card Gradients for Light Theme -->
+    <linearGradient id="glassFillLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.85)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.6)"/>
+    </linearGradient>
+
+    <linearGradient id="modalFillLight" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#fbfbfc"/>
+      <stop offset="100%" stop-color="#f9fafb"/>
     </linearGradient>
 
-    <!-- Glass Icon Badge -->
-    <linearGradient id="glassBadgeLight" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(0,0,0,0.04)"/>
-      <stop offset="100%" stop-color="rgba(0,0,0,0.08)"/>
+    <linearGradient id="btnFillLight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#15803d"/>
     </linearGradient>
 
-    <!-- Shadow Filters -->
-    <filter id="winShadowLight" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.12"/>
+    <!-- Drop Shadows for Light Theme -->
+    <filter id="modalShadowLight" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.14"/>
     </filter>
-
-    <clipPath id="winClipLight">
-      <rect x="72" y="32" width="1056" height="416" rx="16"/>
-    </clipPath>
+    <filter id="glassShadowLight" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
   </defs>
 
   <style>
-    .title-l { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 800; fill: #111827; letter-spacing: -0.02em; }
-    .sub-l { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 400; fill: #4b5563; letter-spacing: -0.01em; }
-    .pill-text-l { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 500; font-size: 13.5px; fill: #374151; }
-    .tab-text-l { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 500; font-size: 12px; fill: #374151; }
-    .avatar-text-l { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 700; font-size: 11px; fill: #ffffff; }
+    .font-base { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .brand-title-l { font-size: 15px; font-weight: 700; fill: #111827; letter-spacing: -0.01em; }
+    .top-btn-l { font-size: 14px; font-weight: 600; fill: #1f2937; }
+    .menu-text-l { font-size: 14px; font-weight: 500; fill: #1f2937; }
+    .menu-caret-l { font-size: 14px; fill: #6b7280; }
+    .modal-h2-l { font-size: 26px; font-weight: 800; fill: #111827; letter-spacing: -0.02em; }
+    .modal-body-l { font-size: 14px; font-weight: 400; fill: #374151; line-height: 1.5; }
+    .modal-sub-l { font-size: 13px; font-weight: 400; fill: #6b7280; line-height: 1.45; }
+    .btn-text-l { font-size: 15.5px; font-weight: 600; fill: #ffffff; }
+    .pill-label-l { font-size: 13.5px; font-weight: 500; fill: #374151; }
   </style>
 
-  <!-- Outer Canvas Base -->
-  <rect width="1200" height="480" rx="22" fill="url(#bgGradLight)"/>
-  <rect width="1200" height="480" rx="22" fill="url(#bgGlowLight)"/>
-  <rect x="0.5" y="0.5" width="1199" height="479" rx="22" fill="none" stroke="rgba(0,0,0,0.08)"/>
+  <!-- Canvas Background (matching light theme) -->
+  <rect width="1200" height="520" rx="20" fill="url(#bgGradLight)"/>
+  <rect width="1200" height="520" rx="20" fill="url(#bgGlowLight1)"/>
+  <rect x="0.5" y="0.5" width="1199" height="519" rx="20" fill="none" stroke="rgba(0,0,0,0.08)"/>
 
-  <!-- Browser Window Frame -->
-  <g filter="url(#winShadowLight)">
-    <rect x="72" y="32" width="1056" height="416" rx="16" fill="url(#winGradLight)"/>
+  <!-- Background Full-Screen Skeleton Tracking Overlay (Mirrored pose behind UI) -->
+  <g opacity="0.2" transform="translate(140, 20)">
+    <!-- Head/Nose -->
+    <circle cx="160" cy="180" r="4.5" fill="#d97706"/>
+    <!-- Shoulders -->
+    <line x1="130" y1="210" x2="190" y2="210" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="130" cy="210" r="4" fill="#ca8a04"/>
+    <circle cx="190" cy="210" r="4" fill="#ca8a04"/>
+    <!-- Left Arm -->
+    <line x1="130" y1="210" x2="105" y2="270" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="105" cy="270" r="4" fill="#ca8a04"/>
+    <line x1="105" y1="270" x2="85" y2="330" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="85" cy="330" r="3.5" fill="#ca8a04"/>
+    <!-- Right Arm -->
+    <line x1="190" y1="210" x2="215" y2="270" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="215" cy="270" r="4" fill="#ca8a04"/>
+    <line x1="215" y1="270" x2="235" y2="330" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="235" cy="330" r="3.5" fill="#ca8a04"/>
+    <!-- Torso / Spine -->
+    <line x1="130" y1="210" x2="140" y2="310" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <line x1="190" y1="210" x2="180" y2="310" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <line x1="140" y1="310" x2="180" y2="310" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="140" cy="310" r="4" fill="#ca8a04"/>
+    <circle cx="180" cy="310" r="4" fill="#ca8a04"/>
+    <!-- Legs -->
+    <line x1="140" y1="310" x2="135" y2="395" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="135" cy="395" r="4" fill="#ca8a04"/>
+    <line x1="135" y1="395" x2="130" y2="470" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="130" cy="470" r="3.5" fill="#ca8a04"/>
+    <line x1="180" y1="310" x2="185" y2="395" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="185" cy="395" r="4" fill="#ca8a04"/>
+    <line x1="185" y1="395" x2="190" y2="470" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="190" cy="470" r="3.5" fill="#ca8a04"/>
   </g>
 
-  <!-- Browser Window Contents (Clipped) -->
-  <g clip-path="url(#winClipLight)">
-    <!-- Browser Chrome / Tab Bar -->
-    <rect x="72" y="32" width="1056" height="42" fill="#ebecef"/>
-    <line x1="72" y1="74" x2="1128" y2="74" stroke="rgba(0,0,0,0.08)"/>
+  <!-- ================= TOP BAR (ACTUAL APP UI) ================= -->
+  <!-- Top Left: Calisthenics Lab Brand Badge -->
+  <g filter="url(#glassShadowLight)" transform="translate(32, 28)">
+    <rect width="168" height="42" rx="14" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+    <circle cx="24" cy="21" r="5" fill="#16a34a"/>
+    <text x="38" y="26" class="font-base brand-title-l">Calisthenics <tspan fill="#16a34a">Lab</tspan></text>
+  </g>
 
-    <!-- Traffic Lights -->
-    <circle cx="94" cy="53" r="5.5" fill="#ff5f57" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>
-    <circle cx="112" cy="53" r="5.5" fill="#febc2e" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>
-    <circle cx="130" cy="53" r="5.5" fill="#28c840" stroke="rgba(0,0,0,0.12)" stroke-width="0.5"/>
+  <!-- Top Center: Primary Permission Button ("Allow camera to track body position") -->
+  <g filter="url(#glassShadowLight)" transform="translate(424, 28)">
+    <rect width="352" height="42" rx="14" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+    <text x="176" y="26" text-anchor="middle" class="font-base top-btn-l">Allow camera to track body position</text>
+  </g>
 
-    <!-- Active Tab -->
-    <path d="M 152 74 L 158 44 A 6 6 0 0 1 164 38 L 296 38 A 6 6 0 0 1 302 44 L 308 74 Z" fill="#ffffff"/>
-    <!-- Small Tab Icon (Pose Node) -->
-    <circle cx="174" cy="56" r="4" fill="#16a34a"/>
-    <circle cx="174" cy="56" r="1.5" fill="#ffffff"/>
-    <text x="185" y="60" class="tab-text-l">Calisthenics Lab</text>
-    <!-- Plus Tab Button -->
-    <path d="M 322 56 L 332 56 M 327 51 L 327 61" stroke="rgba(0,0,0,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Top Right: Exercise Dropdown Menu ("Squat ▾") -->
+  <g filter="url(#glassShadowLight)" transform="translate(1012, 28)">
+    <rect width="156" height="42" rx="14" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+    <text x="24" y="26" class="font-base menu-text-l">Squat</text>
+    <text x="134" y="26" class="font-base menu-caret-l">▾</text>
+  </g>
 
-    <!-- Navigation / Address Toolbar -->
-    <rect x="72" y="74" width="1056" height="38" fill="#f8f9fa"/>
-    <line x1="72" y1="112" x2="1128" y2="112" stroke="rgba(0,0,0,0.06)"/>
+  <!-- ================= CENTER READY MODAL (ACTUAL APP UI) ================= -->
+  <g filter="url(#modalShadowLight)" transform="translate(335, 96)">
+    <!-- Glass Dialog Card -->
+    <rect width="530" height="344" rx="22" fill="url(#modalFillLight)" stroke="rgba(0,0,0,0.1)" stroke-width="1.2"/>
 
-    <!-- Nav arrows & icons -->
-    <path d="M 94 93 L 88 93 M 91 90 L 88 93 L 91 96" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 104 93 L 110 93 M 107 90 L 110 93 L 107 96" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 124 93 A 4 4 0 1 1 127 90 M 127 87 L 127 90 L 130 90" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M 144 95 L 144 92 L 148 89 L 152 92 L 152 95 Z M 147 95 L 147 93 L 149 93 L 149 95" fill="none" stroke="rgba(0,0,0,0.4)" stroke-width="1.4" stroke-linejoin="round"/>
+    <!-- Close 'x' button in corner -->
+    <text x="498" y="36" class="font-base" font-size="22" fill="rgba(0,0,0,0.4)">×</text>
 
-    <!-- URL Bar -->
-    <rect x="170" y="80" width="700" height="26" rx="8" fill="#ffffff" stroke="rgba(0,0,0,0.1)"/>
-    <text x="184" y="97" font-family="-apple-system, sans-serif" font-size="12" fill="#4b5563">
-      <tspan fill="#16a34a" font-weight="600">https://</tspan>detractless.github.io/calisthenics-lab/
+    <!-- Dialog Title -->
+    <text x="265" y="48" text-anchor="middle" class="font-base modal-h2-l">Ready to Record</text>
+
+    <!-- Dialog Privacy Text -->
+    <text x="265" y="80" text-anchor="middle" class="font-base modal-body-l">
+      This app only records and keeps <tspan font-weight="700" fill="#111827">skeletal position</tspan> while doing an exercise.
+    </text>
+    <text x="265" y="100" text-anchor="middle" class="font-base modal-body-l">
+      It never saves or keeps any video or photos of your face or room.
     </text>
 
-    <!-- User Profile Avatar Pill (CD) -->
-    <circle cx="1096" cy="93" r="12" fill="#ca8a04"/>
-    <text x="1096" y="97" class="avatar-text-l" text-anchor="middle">CD</text>
+    <!-- Dialog Corner / Other Text -->
+    <text x="265" y="128" text-anchor="middle" class="font-base modal-sub-l">
+      You can change the exercise you're tracking in the corner, or leave it at default.
+    </text>
+    <text x="265" y="146" text-anchor="middle" class="font-base modal-sub-l">
+      If your exercise isn't found, select <tspan font-weight="600" fill="#111827">+ Other</tspan> to name it when you end.
+    </text>
 
-    <!-- Inner Viewport Background Glow -->
-    <radialGradient id="centerGlowLight" cx="50%" cy="40%" r="50%">
-      <stop offset="0%" stop-color="#16a34a" stop-opacity="0.08"/>
-      <stop offset="100%" stop-color="transparent"/>
-    </radialGradient>
-    <rect x="72" y="112" width="1056" height="336" fill="url(#centerGlowLight)"/>
+    <!-- Skeleton Preview Box inside Modal (Canvas preview) -->
+    <rect x="75" y="168" width="380" height="96" rx="14" fill="#f3f4f6" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
 
-    <!-- App Logo Icon Badge (Centered) -->
-    <rect x="556" y="146" width="88" height="88" rx="24" fill="url(#glassBadgeLight)" stroke="rgba(0,0,0,0.08)" stroke-width="1.2"/>
+    <!-- Animated Push-up / Planche Skeleton Canvas Drawing -->
+    <g transform="translate(115, 172)">
+      <!-- Ground Level -->
+      <line x1="20" y1="78" x2="280" y2="78" stroke="rgba(0,0,0,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
 
-    <!-- Planche / Movement Skeleton Illustration inside Icon -->
-    <g transform="translate(566, 156)">
-      <!-- Torso & Head -->
-      <circle cx="24" cy="46" r="3.5" fill="#d97706"/>
-      <line x1="24" y1="46" x2="33" y2="44" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="33" cy="44" r="3" fill="#ca8a04"/>
-      <!-- Arm: Shoulder -> Elbow -> Wrist -->
-      <line x1="33" y1="44" x2="29" y2="58" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="29" cy="58" r="3" fill="#ca8a04"/>
-      <line x1="29" y1="58" x2="34" y2="68" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="34" cy="68" r="3" fill="#ca8a04"/>
-      <!-- Spine & Hip -->
-      <line x1="33" y1="44" x2="52" y2="38" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="52" cy="38" r="3" fill="#ca8a04"/>
-      <!-- Legs: Hip -> Knee -> Ankle -->
-      <line x1="52" y1="38" x2="68" y2="33" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="68" cy="33" r="3" fill="#ca8a04"/>
-      <line x1="68" y1="33" x2="80" y2="30" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round"/>
-      <circle cx="80" cy="30" r="2.5" fill="#ca8a04"/>
-      <!-- Subtle Ground Floor Support line -->
-      <line x1="16" y1="69" x2="52" y2="69" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Far Arm (depth) -->
+      <line x1="88" y1="36" x2="114" y2="60" stroke="rgba(22,163,74,0.35)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="114" y1="60" x2="88" y2="78" stroke="rgba(22,163,74,0.35)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="88" cy="36" r="2.5" fill="rgba(202,138,4,0.4)"/>
+      <circle cx="114" cy="60" r="2.5" fill="rgba(202,138,4,0.4)"/>
+      <circle cx="88" cy="78" r="2.5" fill="rgba(202,138,4,0.4)"/>
+
+      <!-- Far Leg (depth) -->
+      <line x1="172" y1="46" x2="204" y2="62" stroke="rgba(22,163,74,0.35)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="204" y1="62" x2="236" y2="76" stroke="rgba(22,163,74,0.35)" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="172" cy="46" r="2.5" fill="rgba(202,138,4,0.4)"/>
+      <circle cx="204" cy="62" r="2.5" fill="rgba(202,138,4,0.4)"/>
+      <circle cx="236" cy="76" r="2.5" fill="rgba(202,138,4,0.4)"/>
+
+      <!-- Near Torso & Spine -->
+      <circle cx="56" cy="38" r="4.5" fill="#d97706"/>
+      <line x1="56" y1="38" x2="80" y2="40" stroke="#16a34a" stroke-width="2.8" stroke-linecap="round"/>
+      <line x1="80" y1="40" x2="164" y2="50" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="80" cy="40" r="4" fill="#ca8a04"/>
+      <circle cx="164" cy="50" r="4" fill="#ca8a04"/>
+
+      <!-- Near Arm (Push-up flexion) -->
+      <line x1="80" y1="40" x2="108" y2="64" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="108" cy="64" r="4" fill="#ca8a04"/>
+      <line x1="108" y1="64" x2="80" y2="78" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="80" cy="78" r="3.5" fill="#ca8a04"/>
+
+      <!-- Near Leg -->
+      <line x1="164" y1="50" x2="198" y2="65" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="198" cy="65" r="4" fill="#ca8a04"/>
+      <line x1="198" y1="65" x2="230" y2="78" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="230" cy="78" r="3.5" fill="#ca8a04"/>
     </g>
 
-    <!-- Main Title & Tagline -->
-    <text x="600" y="280" text-anchor="middle" font-size="40" class="title-l">
-      Calisthenics <tspan fill="#16a34a">Lab</tspan>
-    </text>
-    <text x="600" y="316" text-anchor="middle" font-size="17" class="sub-l">
-      Open-source movement tracking &amp; collective pose intelligence.
-    </text>
-
-    <!-- Feature Pills in Frosted Glass -->
-    <g transform="translate(182, 354)">
-      <!-- Pill 1: MediaPipe 3D Pose -->
-      <rect x="0" y="0" width="176" height="36" rx="18" fill="#ffffff" stroke="rgba(0,0,0,0.1)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
-      <circle cx="20" cy="18" r="4" fill="#16a34a"/>
-      <text x="96" y="23" text-anchor="middle" class="pill-text-l">MediaPipe 3D Pose</text>
-
-      <!-- Pill 2: Privacy First (Skeleton Only) -->
-      <rect x="190" y="0" width="168" height="36" rx="18" fill="#ffffff" stroke="rgba(0,0,0,0.1)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
-      <circle cx="210" cy="18" r="4" fill="#0284c7"/>
-      <text x="281" y="23" text-anchor="middle" class="pill-text-l">Zero Video Kept</text>
-
-      <!-- Pill 3: Rep & Form Analysis -->
-      <rect x="372" y="0" width="158" height="36" rx="18" fill="#ffffff" stroke="rgba(0,0,0,0.1)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
-      <circle cx="392" cy="18" r="4" fill="#d97706"/>
-      <text x="458" y="23" text-anchor="middle" class="pill-text-l">Rep &amp; Angle Logic</text>
-
-      <!-- Pill 4: Supabase Shared Library -->
-      <rect x="544" y="0" width="152" height="36" rx="18" fill="#ffffff" stroke="rgba(0,0,0,0.1)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
-      <circle cx="564" cy="18" r="4" fill="#059669"/>
-      <text x="627" y="23" text-anchor="middle" class="pill-text-l">Shared Library</text>
-
-      <!-- Pill 5: 100% Free & Open Source -->
-      <rect x="710" y="0" width="126" height="36" rx="18" fill="#ffffff" stroke="rgba(0,0,0,0.1)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
-      <circle cx="728" cy="18" r="4" fill="#7c3aed"/>
-      <text x="778" y="23" text-anchor="middle" class="pill-text-l">Open Source</text>
+    <!-- Action Button ("Begin recording") -->
+    <g transform="translate(175, 280)">
+      <rect width="180" height="44" rx="14" fill="url(#btnFillLight)"/>
+      <text x="90" y="27" text-anchor="middle" class="font-base btn-text-l">Begin recording</text>
     </g>
   </g>
 
-  <!-- Browser Window Outer Border -->
-  <rect x="72.5" y="32.5" width="1055" height="415" rx="16" fill="none" stroke="rgba(0,0,0,0.12)"/>
+  <!-- ================= BOTTOM FEATURE BADGES ================= -->
+  <g transform="translate(200, 462)">
+    <!-- Pill 1: MediaPipe Pose -->
+    <rect x="0" y="0" width="170" height="34" rx="17" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)"/>
+    <circle cx="18" cy="17" r="4" fill="#16a34a"/>
+    <text x="94" y="22" text-anchor="middle" class="font-base pill-label-l">MediaPipe 3D Pose</text>
+
+    <!-- Pill 2: Zero Video Kept -->
+    <rect x="186" y="0" width="160" height="34" rx="17" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)"/>
+    <circle cx="204" cy="17" r="4" fill="#0284c7"/>
+    <text x="274" y="22" text-anchor="middle" class="font-base pill-label-l">Zero Video Kept</text>
+
+    <!-- Pill 3: Rep & Form Logic -->
+    <rect x="362" y="0" width="160" height="34" rx="17" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)"/>
+    <circle cx="380" cy="17" r="4" fill="#d97706"/>
+    <text x="450" y="22" text-anchor="middle" class="font-base pill-label-l">Rep &amp; Angle Logic</text>
+
+    <!-- Pill 4: Supabase Cloud -->
+    <rect x="538" y="0" width="144" height="34" rx="17" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)"/>
+    <circle cx="556" cy="17" r="4" fill="#059669"/>
+    <text x="618" y="22" text-anchor="middle" class="font-base pill-label-l">Supabase Cloud</text>
+
+    <!-- Pill 5: 100% Open Source -->
+    <rect x="698" y="0" width="132" height="34" rx="17" fill="url(#glassFillLight)" stroke="rgba(0,0,0,0.08)"/>
+    <circle cx="716" cy="17" r="4" fill="#7c3aed"/>
+    <text x="772" y="22" text-anchor="middle" class="font-base pill-label-l">Open Source</text>
+  </g>
 </svg>
