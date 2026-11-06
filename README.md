@@ -1,3 +1,24 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+    <img src="assets/banner-light.svg" alt="Calisthenics Lab: Open-source movement tracking & collective pose intelligence" width="100%">
+  </picture>
+</p>
+
+<p align="center">
+  <a href="https://detractless.github.io/calisthenics-lab/"><b>Try Live Demo (GitHub Pages)</b></a> ·
+  <a href="#how-a-rep-is-counted"><b>How It Works</b></a> ·
+  <a href="#database--supabase-setup"><b>Supabase Setup</b></a> ·
+  <a href="#license"><b>MIT License</b></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/MediaPipe-Pose%20Landmarker-4ade80?style=for-the-badge&logo=google&logoColor=white" alt="MediaPipe">
+  <img src="https://img.shields.io/badge/Supabase-Database-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase">
+  <img src="https://img.shields.io/badge/Privacy-Zero%20Video%20Stored-38bdf8?style=for-the-badge" alt="Privacy">
+  <img src="https://img.shields.io/badge/License-MIT-a78bfa?style=for-the-badge" alt="License: MIT">
+</p>
+
 # Calisthenics Lab
 
 Browser-only rep counter for squats, push-ups and pull-ups. MediaPipe Pose
