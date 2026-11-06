@@ -9,6 +9,8 @@ let chart = null; // what the chart shows, kept so it can be redrawn on resize
 
 export function hideResults() {
   $('results').hidden = true;
+  const otherField = $('other-exercise-field');
+  if (otherField) otherField.hidden = true;
   chart = null;
 }
 
@@ -17,16 +19,28 @@ export function redrawChart() {
 }
 
 // For an exercise that is not in the list: nothing to count, just confirm the recording.
-export function showRecordingOnly(durationMs) {
+export function showRecordingOnly(durationMs, customName = '') {
   chart = null;
   $('headline-value').textContent = `${(durationMs / 1000).toFixed(0)} s`;
-  $('headline-label').textContent = 'recorded';
+  $('headline-label').textContent = customName ? `recorded (${customName})` : 'recorded';
   $('rep-details').hidden = true;
+  const otherField = $('other-exercise-field');
+  if (otherField) {
+    otherField.hidden = false;
+    const input = $('custom-exercise-input');
+    if (input) {
+      input.value = customName;
+      setTimeout(() => input.focus(), 50);
+    }
+  }
   $('results').hidden = false;
 }
 
 // samples: [{ timeMs, angle | null }]. Returns the summary { counted, valid, review, partial }.
 export function showResults(samples, limits) {
+  const otherField = $('other-exercise-field');
+  if (otherField) otherField.hidden = true;
+
   const { reps, smoothed, summary } = countReps(samples, limits);
 
   $('headline-value').textContent = summary.counted;

@@ -12,7 +12,13 @@ import { createExerciseMenu } from './exercise-menu.js';
 const $ = (id) => document.getElementById(id);
 const video = $('video');
 const overlay = $('overlay');
+const primaryControl = $('primary-control');
 const primary = $('primary');
+const readyDialog = $('ready-dialog');
+const readyDialogClose = $('ready-dialog-close');
+const beginRecordingBtn = $('begin-recording');
+const customExerciseInput = $('custom-exercise-input');
+const saveCustomExerciseBtn = $('save-custom-exercise');
 const live = $('live');
 const statusText = $('status');
 
@@ -22,13 +28,14 @@ const CAMERA_ERRORS = {
   NotReadableError: 'Another app is using the camera. Close it and try again.',
 };
 
-// The one button at the top changes with the stage.
+// The top button changes with the stage. In 'ready' stage, the top button
+// disappears and the center dialog asks to begin recording.
 const PRIMARY_BUTTON = {
-  off: { text: 'Allow camera to track body position', className: 'primary' },
-  starting: { text: 'Starting camera…', className: 'primary', disabled: true },
-  ready: { text: 'Record', className: 'primary is-record' },
-  countdown: { text: 'Cancel', className: 'primary' },
-  recording: { text: 'Stop', className: 'primary is-stop' },
+  off: { text: 'Allow camera to track body position', className: 'primary', visible: true },
+  starting: { text: 'Starting camera…', className: 'primary', disabled: true, visible: true },
+  ready: { text: 'Record', className: 'primary is-record', visible: false },
+  countdown: { text: 'Cancel', className: 'primary', visible: true },
+  recording: { text: 'Stop', className: 'primary is-stop', visible: true },
 };
 
 let stage = 'off'; // key of PRIMARY_BUTTON
@@ -51,12 +58,19 @@ function setStatus(message) {
 
 function setStage(next) {
   stage = next;
-  const { text, className, disabled = false } = PRIMARY_BUTTON[next];
+  const { text, className, disabled = false, visible = true } = PRIMARY_BUTTON[next];
   primary.textContent = text;
   primary.className = className;
   primary.disabled = disabled;
+  if (primaryControl) primaryControl.hidden = !visible;
   menu.setDisabled(next !== 'off' && next !== 'ready');
   if (next !== 'countdown' && next !== 'recording') live.hidden = true;
+
+  if (next === 'ready') {
+    readyDialog.hidden = false;
+  } else {
+    readyDialog.hidden = true;
+  }
 }
 
 function showLive(text, { big = false } = {}) {
@@ -76,9 +90,13 @@ const toSample = (frame, exercise) => ({
   angle: exercise.measure(frame.landmarks, frame.world).angle,
 });
 
-function saveCsv() {
+function slugify(name) {
+  return name.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'other';
+}
+
+function saveCsv(exerciseSlug = savedExercise) {
   const stamp = new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-');
-  downloadCsv(framesToCsv(frames), `landmarks-${savedExercise}-${stamp}.csv`);
+  downloadCsv(framesToCsv(frames), `landmarks-${exerciseSlug}-${stamp}.csv`);
 }
 
 function endSession(message) {
@@ -86,6 +104,7 @@ function endSession(message) {
   session = null;
   stopRecording = null;
   drawSkeleton(overlay, null);
+  readyDialog.hidden = true;
   setStage('off');
   if (message) setStatus(message);
 }
@@ -109,7 +128,6 @@ async function startCamera() {
     endSession(`Tracking stopped: ${error.message}`);
   });
   setStage('ready');
-  setStatus('Step back so your whole body is in view, then press Record.');
 }
 
 function handleLiveFrame(frame, recorded) {
@@ -140,6 +158,7 @@ function showCountdown(left) {
 // ---- Recording ----
 
 async function record() {
+  readyDialog.hidden = true;
   const key = menu.value();
   liveExercise = EXERCISES[key];
   liveSamples = [];
@@ -174,15 +193,28 @@ function finishRecording({ frames: recorded, reason }, key) {
   frames = recorded;
   savedExercise = key;
   const exercise = EXERCISES[key];
-  if (exercise.measure) showResults(frames.map((f) => toSample(f, exercise)), exercise);
-  else showRecordingOnly(frames[frames.length - 1].timeMs);
-  saveCsv();
+  if (exercise.measure) {
+    showResults(frames.map((f) => toSample(f, exercise)), exercise);
+    saveCsv(savedExercise);
+  } else {
+    showRecordingOnly(frames[frames.length - 1].timeMs);
+    saveCsv(savedExercise);
+  }
 
   const notes = ['CSV downloaded.'];
   const seenShare = frames.filter((f) => f.landmarks).length / frames.length;
   if (seenShare < 0.5) notes.push('Your body was seen in under half the frames. Step back so your whole body is in view.');
   if (reason === 'timeout') notes.push(`Recording stopped at the ${MAX_RECORDING_MS / 60000}-minute limit.`);
   setStatus(notes.join(' '));
+}
+
+function applyCustomExerciseName() {
+  const name = customExerciseInput?.value?.trim();
+  if (!name) return;
+  savedExercise = slugify(name);
+  $('headline-label').textContent = `recorded (${name})`;
+  saveCsv(savedExercise);
+  setStatus(`Exercise saved as "${name}". Updated CSV downloaded.`);
 }
 
 // ---- Controls ----
@@ -192,11 +224,31 @@ primary.addEventListener('click', () => {
   else if (stage === 'ready') record();
   else if (stage === 'countdown' || stage === 'recording') stopRecording?.();
 });
+
+readyDialogClose?.addEventListener('click', () => {
+  readyDialog.hidden = true;
+  if (primaryControl) primaryControl.hidden = false;
+  setStatus('Step back so your whole body is in view, then press Record.');
+});
+
+beginRecordingBtn?.addEventListener('click', () => {
+  record();
+});
+
+saveCustomExerciseBtn?.addEventListener('click', applyCustomExerciseName);
+customExerciseInput?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    applyCustomExerciseName();
+  }
+});
+
 $('results-close').addEventListener('click', () => {
   hideResults();
   setStatus('');
 });
-$('download').addEventListener('click', saveCsv);
+
+$('download').addEventListener('click', () => saveCsv(savedExercise));
 window.addEventListener('resize', redrawChart);
 
 setStage('off');

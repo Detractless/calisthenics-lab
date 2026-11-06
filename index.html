@@ -12,7 +12,7 @@
   <canvas id="overlay"></canvas>
 
   <header class="top-bar">
-    <div class="glass control">
+    <div class="glass control" id="primary-control">
       <button id="primary" class="primary">Allow camera to track body position</button>
     </div>
     <div class="menu" id="exercise-menu">
@@ -21,12 +21,30 @@
     </div>
   </header>
 
+  <!-- Ready to record popup dialog -->
+  <section class="glass dialog-modal" id="ready-dialog" hidden>
+    <button type="button" class="close" id="ready-dialog-close" aria-label="Close dialog">×</button>
+    <div class="dialog-content">
+      <h2 class="dialog-title">Ready to Record</h2>
+      <p class="dialog-text">
+        This app only records and keeps <strong>skeletal position</strong> while doing an exercise. It never saves or keeps any video or photos of your face or room.
+      </p>
+      <div class="dialog-tip">
+        <p>• You can change the exercise you're tracking in the corner, or leave it at the default.</p>
+        <p>• If your exercise isn't found, select <strong>+ Other</strong>. When you end the session, you'll be able to name the exercise you did.</p>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" id="begin-recording" class="primary-action">Begin recording</button>
+      </div>
+    </div>
+  </section>
+
   <div class="live" id="live" hidden></div>
   <p class="glass status" id="status" role="status" hidden></p>
 
   <section class="glass results" id="results" hidden>
     <button type="button" class="close" id="results-close" aria-label="Close results">×</button>
-    <div class="headline"><strong id="headline-value">0</strong> <span id="headline-label">reps</span></div>
+    <div class="headline"><strong id=\"headline-value\">0</strong> <span id=\"headline-label\">reps</span></div>
     <div id="rep-details">
       <div class="stats">
         <div><strong id="stat-valid">0</strong><span>Valid</span></div>
@@ -38,6 +56,13 @@
         <tbody id="rep-rows"></tbody>
       </table>
       <canvas id="angle-chart"></canvas>
+    </div>
+    <div id="other-exercise-field" class="other-exercise-field" hidden>
+      <label for="custom-exercise-input" class="custom-label">Name the exercise you did:</label>
+      <div class="input-row">
+        <input type="text" id="custom-exercise-input" class="glass-input" placeholder="e.g. Planche, Muscle-up, Front lever" maxlength="50" autocomplete="off">
+        <button type="button" id="save-custom-exercise" class="dialog-btn">Save</button>
+      </div>
     </div>
     <button type="button" id="download" class="secondary">Download CSV again</button>
   </section>
