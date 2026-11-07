@@ -1,220 +1,270 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" width="1200" height="460" role="img" aria-label="Calisthenics Lab — browser-only skeletal movement tracking">
+  <title>Calisthenics Lab — tracked handstand push-ups, pull-ups, pistol squats and L-sits</title>
   <defs>
-    <!-- Background Canvas Gradients matching Calisthenics Lab -->
-    <radialGradient id="bgGlow1" cx="15%" cy="10%" r="60%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.09"/>
-      <stop offset="70%" stop-color="transparent"/>
-    </radialGradient>
-    <radialGradient id="bgGlow2" cx="90%" cy="95%" r="55%">
-      <stop offset="0%" stop-color="#96a5be" stop-opacity="0.08"/>
-      <stop offset="70%" stop-color="transparent"/>
-    </radialGradient>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="bg" x1="0" y1="0" x2="0.65" y2="1">
       <stop offset="0%" stop-color="#2a2c31"/>
       <stop offset="100%" stop-color="#141518"/>
     </linearGradient>
-
-    <!-- Frosted Glass Gradient -->
-    <linearGradient id="glassFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.14)"/>
-      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.06)"/>
+    <radialGradient id="glowTop" cx="10%" cy="6%" r="72%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowCool" cx="94%" cy="98%" r="64%">
+      <stop offset="0%" stop-color="#96a5be" stop-opacity="0.09"/>
+      <stop offset="70%" stop-color="#96a5be" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowPose" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="fadeFloor" gradientUnits="userSpaceOnUse" x1="-165" y1="0" x2="165" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="22%" stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="78%" stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-
-    <linearGradient id="modalFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(35, 38, 44, 0.88)"/>
-      <stop offset="100%" stop-color="rgba(20, 22, 26, 0.94)"/>
+    <linearGradient id="fadeBar" gradientUnits="userSpaceOnUse" x1="-150" y1="0" x2="150" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="80%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-
-    <linearGradient id="btnFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.22)"/>
-      <stop offset="100%" stop-color="rgba(255, 255, 255, 0.12)"/>
-    </linearGradient>
-
-    <!-- Drop Shadows -->
-    <filter id="modalShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="16" stdDeviation="28" flood-color="#000000" flood-opacity="0.6"/>
-    </filter>
-    <filter id="glassShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    <filter id="softGlow" x="-60%" y="-40%" width="220%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
   <style>
-    .font-base { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-    .brand-title { font-size: 15px; font-weight: 700; fill: rgba(255,255,255,0.95); letter-spacing: -0.01em; }
-    .top-btn { font-size: 14px; font-weight: 600; fill: rgba(255,255,255,0.9); }
-    .menu-text { font-size: 14px; font-weight: 500; fill: rgba(255,255,255,0.92); }
-    .menu-caret { font-size: 14px; fill: rgba(255,255,255,0.6); }
-    .modal-h2 { font-size: 26px; font-weight: 800; fill: #ffffff; letter-spacing: -0.02em; }
-    .modal-body { font-size: 14px; font-weight: 400; fill: rgba(255,255,255,0.85); line-height: 1.5; }
-    .modal-sub { font-size: 13px; font-weight: 400; fill: rgba(255,255,255,0.6); line-height: 1.45; }
-    .btn-text { font-size: 15.5px; font-weight: 600; fill: #ffffff; }
-    .pill-label { font-size: 13.5px; font-weight: 500; fill: rgba(255,255,255,0.9); }
+    .ui { font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .brand { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; fill: rgba(255,255,255,0.92); }
+    .h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.028em; fill: #ffffff; }
+    .sub { font-size: 15px; font-weight: 400; letter-spacing: -0.005em; fill: rgba(255,255,255,0.63); }
+    .move { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; fill: #4ade80; fill-opacity: 0.9; }
   </style>
 
-  <!-- Canvas Background (matching body) -->
-  <rect width="1200" height="520" rx="20" fill="url(#bgGrad)"/>
-  <rect width="1200" height="520" rx="20" fill="url(#bgGlow1)"/>
-  <rect width="1200" height="520" rx="20" fill="url(#bgGlow2)"/>
-  <rect x="0.5" y="0.5" width="1199" height="519" rx="20" fill="none" stroke="rgba(255,255,255,0.1)"/>
+  <rect width="1200" height="460" rx="18" fill="url(#bg)"/>
+  <rect width="1200" height="460" rx="18" fill="url(#glowTop)"/>
+  <rect width="1200" height="460" rx="18" fill="url(#glowCool)"/>
+  <rect x="0.5" y="0.5" width="1199" height="459" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.09"/>
 
-  <!-- Background Full-Screen Skeleton Tracking Overlay (Mirrored pose behind UI) -->
-  <g opacity="0.32" transform="translate(140, 20)">
-    <!-- Right side (background user stance) -->
-    <circle cx="160" cy="180" r="4.5" fill="#f59e0b"/> <!-- Head/Nose -->
-    <!-- Shoulders -->
-    <line x1="130" y1="210" x2="190" y2="210" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="130" cy="210" r="4" fill="#fbbf24"/>
-    <circle cx="190" cy="210" r="4" fill="#fbbf24"/>
-    <!-- Left Arm -->
-    <line x1="130" y1="210" x2="105" y2="270" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="105" cy="270" r="4" fill="#fbbf24"/>
-    <line x1="105" y1="270" x2="85" y2="330" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="85" cy="330" r="3.5" fill="#fbbf24"/>
-    <!-- Right Arm -->
-    <line x1="190" y1="210" x2="215" y2="270" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="215" cy="270" r="4" fill="#fbbf24"/>
-    <line x1="215" y1="270" x2="235" y2="330" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="235" cy="330" r="3.5" fill="#fbbf24"/>
-    <!-- Torso / Spine -->
-    <line x1="130" y1="210" x2="140" y2="310" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <line x1="190" y1="210" x2="180" y2="310" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <line x1="140" y1="310" x2="180" y2="310" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="140" cy="310" r="4" fill="#fbbf24"/>
-    <circle cx="180" cy="310" r="4" fill="#fbbf24"/>
-    <!-- Legs -->
-    <line x1="140" y1="310" x2="135" y2="395" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="135" cy="395" r="4" fill="#fbbf24"/>
-    <line x1="135" y1="395" x2="130" y2="470" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="130" cy="470" r="3.5" fill="#fbbf24"/>
-    <line x1="180" y1="310" x2="185" y2="395" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-    <circle cx="185" cy="395" r="4" fill="#fbbf24"/>
-    <line x1="185" y1="395" x2="190" y2="470" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
-    <circle cx="190" cy="470" r="3.5" fill="#fbbf24"/>
+  <g transform="translate(80, 62)">
+    <text x="0" y="0" class="ui brand">Calisthenics Lab</text>
   </g>
+  <text class="ui h1" x="80" y="190">Teach the machine</text>
+  <text class="ui h1" x="80" y="240">what a real rep looks like</text>
+  <text class="ui h1" x="80" y="290">for any calisthenics move.</text>
+  <text class="ui sub" x="80" y="338">Browser-only skeletal tracking. No video kept. An open library for movement.</text>
 
-  <!-- ================= TOP BAR (ACTUAL APP UI) ================= -->
-  <!-- Top Left: Calisthenics Lab Brand Badge -->
-  <g filter="url(#glassShadow)" transform="translate(32, 28)">
-    <rect width="168" height="42" rx="14" fill="url(#glassFill)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-    <circle cx="24" cy="21" r="5" fill="#4ade80"/>
-    <text x="38" y="26" class="font-base brand-title">Calisthenics <tspan fill="#4ade80">Lab</tspan></text>
-  </g>
+  <g transform="translate(906, 372)">
+    <ellipse cx="0" cy="-130" rx="145" ry="185" fill="url(#glowPose)"/>
+    <line x1="-165" y1="0" x2="165" y2="0" stroke="url(#fadeFloor)" stroke-width="1.6"/>
 
-  <!-- Top Center: Primary Permission Button ("Allow camera to track body position") -->
-  <g filter="url(#glassShadow)" transform="translate(424, 28)">
-    <rect width="352" height="42" rx="14" fill="url(#glassFill)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-    <text x="176" y="26" text-anchor="middle" class="font-base top-btn">Allow camera to track body position</text>
-  </g>
-
-  <!-- Top Right: Exercise Dropdown Menu ("Squat ▾") -->
-  <g filter="url(#glassShadow)" transform="translate(1012, 28)">
-    <rect width="156" height="42" rx="14" fill="url(#glassFill)" stroke="rgba(255,255,255,0.22)" stroke-width="1"/>
-    <text x="24" y="26" class="font-base menu-text">Squat</text>
-    <text x="134" y="26" class="font-base menu-caret">▾</text>
-  </g>
-
-  <!-- ================= CENTER READY MODAL (ACTUAL APP UI) ================= -->
-  <g filter="url(#modalShadow)" transform="translate(335, 96)">
-    <!-- Glass Dialog Card -->
-    <rect width="530" height="344" rx="22" fill="url(#modalFill)" stroke="rgba(255,255,255,0.24)" stroke-width="1.2"/>
-
-    <!-- Close 'x' button in corner -->
-    <text x="498" y="36" class="font-base" font-size="22" fill="rgba(255,255,255,0.5)">×</text>
-
-    <!-- Dialog Title -->
-    <text x="265" y="48" text-anchor="middle" class="font-base modal-h2">Ready to Record</text>
-
-    <!-- Dialog Privacy Text -->
-    <text x="265" y="80" text-anchor="middle" class="font-base modal-body">
-      This app only records and keeps <tspan font-weight="700" fill="#ffffff">skeletal position</tspan> while doing an exercise.
-    </text>
-    <text x="265" y="100" text-anchor="middle" class="font-base modal-body">
-      It never saves or keeps any video or photos of your face or room.
-    </text>
-
-    <!-- Dialog Corner / Other Text -->
-    <text x="265" y="128" text-anchor="middle" class="font-base modal-sub">
-      You can change the exercise you're tracking in the corner, or leave it at default.
-    </text>
-    <text x="265" y="146" text-anchor="middle" class="font-base modal-sub">
-      If your exercise isn't found, select <tspan font-weight="600" fill="#ffffff">+ Other</tspan> to name it when you end.
-    </text>
-
-    <!-- Skeleton Preview Box inside Modal (Canvas preview) -->
-    <rect x="75" y="168" width="380" height="96" rx="14" fill="rgba(0,0,0,0.38)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-
-    <!-- Animated Push-up / Planche Skeleton Canvas Drawing -->
-    <g transform="translate(115, 172)">
-      <!-- Subtle Ground Level -->
-      <line x1="20" y1="78" x2="280" y2="78" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
-
-      <!-- Far Arm (depth) -->
-      <line x1="88" y1="36" x2="114" y2="60" stroke="rgba(74,222,128,0.35)" stroke-width="2" stroke-linecap="round"/>
-      <line x1="114" y1="60" x2="88" y2="78" stroke="rgba(74,222,128,0.35)" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="88" cy="36" r="2.5" fill="rgba(251,191,36,0.4)"/>
-      <circle cx="114" cy="60" r="2.5" fill="rgba(251,191,36,0.4)"/>
-      <circle cx="88" cy="78" r="2.5" fill="rgba(251,191,36,0.4)"/>
-
-      <!-- Far Leg (depth) -->
-      <line x1="172" y1="46" x2="204" y2="62" stroke="rgba(74,222,128,0.35)" stroke-width="2" stroke-linecap="round"/>
-      <line x1="204" y1="62" x2="236" y2="76" stroke="rgba(74,222,128,0.35)" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="172" cy="46" r="2.5" fill="rgba(251,191,36,0.4)"/>
-      <circle cx="204" cy="62" r="2.5" fill="rgba(251,191,36,0.4)"/>
-      <circle cx="236" cy="76" r="2.5" fill="rgba(251,191,36,0.4)"/>
-
-      <!-- Near Torso & Spine -->
-      <circle cx="56" cy="38" r="4.5" fill="#f59e0b"/> <!-- Nose/Head -->
-      <line x1="56" y1="38" x2="80" y2="40" stroke="#4ade80" stroke-width="2.8" stroke-linecap="round"/>
-      <line x1="80" y1="40" x2="164" y2="50" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="80" cy="40" r="4" fill="#fbbf24"/> <!-- Near Shoulder -->
-      <circle cx="164" cy="50" r="4" fill="#fbbf24"/> <!-- Near Hip -->
-
-      <!-- Near Arm (Push-up flexion) -->
-      <line x1="80" y1="40" x2="108" y2="64" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="108" cy="64" r="4" fill="#fbbf24"/> <!-- Elbow -->
-      <line x1="108" y1="64" x2="80" y2="78" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="80" cy="78" r="3.5" fill="#fbbf24"/> <!-- Wrist -->
-
-      <!-- Near Leg -->
-      <line x1="164" y1="50" x2="198" y2="65" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="198" cy="65" r="4" fill="#fbbf24"/> <!-- Knee -->
-      <line x1="198" y1="65" x2="230" y2="78" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="230" cy="78" r="3.5" fill="#fbbf24"/> <!-- Ankle -->
+    <!-- ================= HANDSTAND PUSH-UP ================= -->
+    <g opacity="1">
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.23077;0.25;0.98077;1" dur="26s" repeatCount="indefinite"/>
+      <g filter="url(#softGlow)">
+        <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
+          <path d="M-38 -92 L-44 -46 L-34 0">
+            <animate attributeName="d" values="M-38 -92 L-44 -46 L-34 0; M-38 -46 L-64 -26 L-34 0; M-38 -92 L-44 -46 L-34 0"
+                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </path>
+          <path d="M38 -92 L44 -46 L34 0">
+            <animate attributeName="d" values="M38 -92 L44 -46 L34 0; M38 -46 L64 -26 L34 0; M38 -92 L44 -46 L34 0"
+                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </path>
+        </g>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0; 0 46; 0 0" keyTimes="0;0.5;1"
+                            dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          <circle cx="0" cy="-70" r="10" fill="#f59e0b"/>
+          <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
+            <path d="M-40 -90 L40 -90"/>
+            <path d="M0 -94 L0 -172"/>
+            <path d="M-18 -176 L18 -176"/>
+            <path d="M-18 -176 L-33 -234 L-25 -286 L-29 -296"/>
+            <path d="M18 -176 L33 -234 L25 -286 L29 -296"/>
+          </g>
+          <g fill="#fbbf24">
+            <circle cx="-40" cy="-90" r="5.2"/>
+            <circle cx="40" cy="-90" r="5.2"/>
+            <circle cx="-18" cy="-176" r="5.2"/>
+            <circle cx="18" cy="-176" r="5.2"/>
+            <circle cx="-33" cy="-234" r="4.8"/>
+            <circle cx="33" cy="-234" r="4.8"/>
+            <circle cx="-25" cy="-286" r="4"/>
+            <circle cx="25" cy="-286" r="4"/>
+          </g>
+        </g>
+        <g fill="#fbbf24">
+          <circle cx="-44" cy="-46" r="5.2">
+            <animate attributeName="cx" values="-44;-64;-44" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+            <animate attributeName="cy" values="-46;-26;-46" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </circle>
+          <circle cx="44" cy="-46" r="5.2">
+            <animate attributeName="cx" values="44;64;44" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+            <animate attributeName="cy" values="-46;-26;-46" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </circle>
+          <circle cx="-34" cy="0" r="5"/>
+          <circle cx="34" cy="0" r="5"/>
+        </g>
+      </g>
     </g>
 
-    <!-- Action Button ("Begin recording") -->
-    <g transform="translate(175, 280)">
-      <rect width="180" height="44" rx="14" fill="url(#btnFill)" stroke="rgba(255,255,255,0.28)" stroke-width="1.2"/>
-      <text x="90" y="27" text-anchor="middle" class="font-base btn-text">Begin recording</text>
+    <!-- ================= PULL-UP ================= -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23077;0.25;0.5;0.51923;1" dur="26s" repeatCount="indefinite"/>
+      <g filter="url(#softGlow)">
+        <line x1="-102" y1="-340" x2="102" y2="-340" stroke="#9aa2b0" stroke-opacity="0.34" stroke-width="6" stroke-linecap="round"/>
+        <line x1="-102" y1="-342.5" x2="102" y2="-342.5" stroke="#ffffff" stroke-opacity="0.10" stroke-width="6" stroke-linecap="round"/>
+        <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
+          <path d="M-40 -338 L-52 -284 L-42 -228">
+            <animate attributeName="d" values="M-40 -338 L-52 -284 L-42 -228; M-40 -338 L-90 -314 L-42 -288; M-40 -338 L-52 -284 L-42 -228"
+                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </path>
+          <path d="M40 -338 L52 -284 L42 -228">
+            <animate attributeName="d" values="M40 -338 L52 -284 L42 -228; M40 -338 L90 -314 L42 -288; M40 -338 L52 -284 L42 -228"
+                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </path>
+        </g>
+        <g>
+          <animateTransform attributeName="transform" type="translate" values="0 0; 0 -60; 0 0" keyTimes="0;0.5;1"
+                            dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          <circle cx="0" cy="-250" r="10" fill="#f59e0b"/>
+          <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
+            <path d="M-42 -228 L42 -228"/>
+            <path d="M0 -240 L0 -128"/>
+            <path d="M-16 -132 L16 -132"/>
+            <path d="M-16 -132 L-22 -78 L-18 -30 L-22 -20"/>
+            <path d="M16 -132 L22 -78 L18 -30 L22 -20"/>
+          </g>
+          <g fill="#fbbf24">
+            <circle cx="-42" cy="-228" r="5.2"/>
+            <circle cx="42" cy="-228" r="5.2"/>
+            <circle cx="-16" cy="-132" r="5.2"/>
+            <circle cx="16" cy="-132" r="5.2"/>
+            <circle cx="-22" cy="-78" r="4.8"/>
+            <circle cx="22" cy="-78" r="4.8"/>
+            <circle cx="-18" cy="-30" r="4"/>
+            <circle cx="18" cy="-30" r="4"/>
+          </g>
+        </g>
+        <g fill="#fbbf24">
+          <circle cx="-52" cy="-284" r="5">
+            <animate attributeName="cx" values="-52;-90;-52" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+            <animate attributeName="cy" values="-284;-314;-284" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </circle>
+          <circle cx="52" cy="-284" r="5">
+            <animate attributeName="cx" values="52;90;52" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+            <animate attributeName="cy" values="-284;-314;-284" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
+          </circle>
+          <circle cx="-40" cy="-338" r="4.6"/>
+          <circle cx="40" cy="-338" r="4.6"/>
+        </g>
+      </g>
     </g>
-  </g>
 
-  <!-- ================= BOTTOM FEATURE BADGES ================= -->
-  <g transform="translate(200, 462)">
-    <!-- Pill 1: MediaPipe Pose -->
-    <rect x="0" y="0" width="170" height="34" rx="17" fill="url(#glassFill)" stroke="rgba(255,255,255,0.18)"/>
-    <circle cx="18" cy="17" r="4" fill="#4ade80"/>
-    <text x="94" y="22" text-anchor="middle" class="font-base pill-label">MediaPipe 3D Pose</text>
+    <!-- ================= PISTOL SQUAT ================= -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.51923;0.75;0.76923;1" dur="26s" repeatCount="indefinite"/>
+      <g filter="url(#softGlow)">
+        <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
+          <path d="M2 -164 L4 -80 L0 0">
+            <animate attributeName="d" values="M2 -164 L4 -80 L0 0; M2 -98 L66 -44 L0 0; M2 -164 L4 -80 L0 0"
+                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
+                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </path>
+          <path d="M2 -164 L14 -240">
+            <animate attributeName="d" values="M2 -164 L14 -240; M2 -98 L40 -158; M2 -164 L14 -240"
+                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
+                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </path>
+          <path d="M2 -164 L84 -128 L154 -98 L166 -100">
+            <animate attributeName="d" values="M2 -164 L84 -128 L154 -98 L166 -100; M2 -98 L84 -96 L158 -88 L168 -92; M2 -164 L84 -128 L154 -98 L166 -100"
+                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
+                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </path>
+          <path d="M14 -240 L50 -244 L86 -232">
+            <animate attributeName="d" values="M14 -240 L50 -244 L86 -232; M40 -158 L76 -160 L110 -148; M14 -240 L50 -244 L86 -232"
+                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
+                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </path>
+        </g>
+        <circle cx="26" cy="-260" r="10" fill="#f59e0b">
+          <animate attributeName="cx" values="26;54;26" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          <animate attributeName="cy" values="-260;-177;-260" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+        </circle>
+        <g fill="#fbbf24">
+          <circle cx="2" cy="-164" r="5.2">
+            <animate attributeName="cy" values="-164;-98;-164" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="4" cy="-80" r="4.8">
+            <animate attributeName="cx" values="4;66;4" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+            <animate attributeName="cy" values="-80;-44;-80" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="0" cy="0" r="4.6"/>
+          <circle cx="84" cy="-128" r="4.8">
+            <animate attributeName="cy" values="-128;-96;-128" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="154" cy="-98" r="4">
+            <animate attributeName="cy" values="-98;-88;-98" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="14" cy="-240" r="5.2">
+            <animate attributeName="cx" values="14;40;14" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+            <animate attributeName="cy" values="-240;-158;-240" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="50" cy="-244" r="5">
+            <animate attributeName="cx" values="50;76;50" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+            <animate attributeName="cy" values="-244;-160;-244" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="86" cy="-232" r="4.4">
+            <animate attributeName="cx" values="86;110;86" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+            <animate attributeName="cy" values="-232;-148;-232" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+        </g>
+      </g>
+    </g>
 
-    <!-- Pill 2: Zero Video Kept -->
-    <rect x="186" y="0" width="160" height="34" rx="17" fill="url(#glassFill)" stroke="rgba(255,255,255,0.18)"/>
-    <circle cx="204" cy="17" r="4" fill="#38bdf8"/>
-    <text x="274" y="22" text-anchor="middle" class="font-base pill-label">Zero Video Kept</text>
+    <!-- ================= L-SIT ================= -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.75;0.76923;0.98077;1" dur="26s" repeatCount="indefinite"/>
+      <g filter="url(#softGlow)" transform="translate(-95,0) scale(1.5)">
+        <line x1="2" y1="-60" x2="2" y2="0" stroke="#8b93a1" stroke-opacity="0.38" stroke-width="3.4" stroke-linecap="round"/>
+        <line x1="-8" y1="0" x2="12" y2="0" stroke="#8b93a1" stroke-opacity="0.38" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M10 -172 L6 -116 L2 -60" fill="none" stroke="#4ade80" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M10 -172 L-8 -70" fill="none" stroke="#4ade80" stroke-width="3.4" stroke-linecap="round"/>
+        <path d="M-8 -70 L78 -68 L152 -64 L164 -62" fill="none" stroke="#4ade80" stroke-width="3.4" stroke-linecap="round">
+          <animate attributeName="d" values="M-8 -70 L78 -68 L152 -64 L164 -62; M-8 -70 L77 -100 L150 -124 L162 -130; M-8 -70 L78 -68 L152 -64 L164 -62"
+                   keyTimes="0;0.5;1" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+        </path>
+        <circle cx="16" cy="-188" r="7" fill="#f59e0b"/>
+        <g fill="#fbbf24">
+          <circle cx="10" cy="-172" r="3.6"/>
+          <circle cx="6" cy="-116" r="3.4"/>
+          <circle cx="2" cy="-60" r="3.4"/>
+          <circle cx="-8" cy="-70" r="3.6"/>
+          <circle cx="78" cy="-68" r="3.4">
+            <animate attributeName="cy" values="-68;-100;-68" keyTimes="0;0.5;1" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+          <circle cx="152" cy="-64" r="2.8">
+            <animate attributeName="cy" values="-64;-124;-64" keyTimes="0;0.5;1" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
+          </circle>
+        </g>
+      </g>
+    </g>
 
-    <!-- Pill 3: Rep & Form Logic -->
-    <rect x="362" y="0" width="160" height="34" rx="17" fill="url(#glassFill)" stroke="rgba(255,255,255,0.18)"/>
-    <circle cx="380" cy="17" r="4" fill="#fbbf24"/>
-    <text x="450" y="22" text-anchor="middle" class="font-base pill-label">Rep &amp; Angle Logic</text>
-
-    <!-- Pill 4: Supabase Cloud -->
-    <rect x="538" y="0" width="144" height="34" rx="17" fill="url(#glassFill)" stroke="rgba(255,255,255,0.18)"/>
-    <circle cx="556" cy="17" r="4" fill="#34d399"/>
-    <text x="618" y="22" text-anchor="middle" class="font-base pill-label">Supabase Cloud</text>
-
-    <!-- Pill 5: 100% Open Source -->
-    <rect x="698" y="0" width="132" height="34" rx="17" fill="url(#glassFill)" stroke="rgba(255,255,255,0.18)"/>
-    <circle cx="716" cy="17" r="4" fill="#a78bfa"/>
-    <text x="772" y="22" text-anchor="middle" class="font-base pill-label">Open Source</text>
+    <!-- ================= MOVE LABELS ================= -->
+    <text class="ui move" opacity="1" x="0" y="44" text-anchor="middle">HANDSTAND PUSH-UP
+      <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.23077;0.25;0.98077;1" dur="26s" repeatCount="indefinite"/>
+    </text>
+    <text class="ui move" opacity="0" x="0" y="44" text-anchor="middle">PULL-UP
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23077;0.25;0.5;0.51923;1" dur="26s" repeatCount="indefinite"/>
+    </text>
+    <text class="ui move" opacity="0" x="0" y="44" text-anchor="middle">PISTOL SQUAT
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.51923;0.75;0.76923;1" dur="26s" repeatCount="indefinite"/>
+    </text>
+    <text class="ui move" opacity="0" x="0" y="44" text-anchor="middle">L-SIT
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.75;0.76923;0.98077;1" dur="26s" repeatCount="indefinite"/>
+    </text>
   </g>
 </svg>
