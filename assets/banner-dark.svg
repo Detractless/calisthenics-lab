@@ -48,179 +48,65 @@
   <rect width="1200" height="460" rx="18" fill="url(#glowCool)"/>
   <rect x="0.5" y="0.5" width="1199" height="459" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.09"/>
 
-  <g transform="translate(80, 62)">
-    <text x="0" y="0" class="ui brand">Calisthenics Lab</text>
-  </g>
-  <text class="ui h1" x="80" y="190">Teach the machine</text>
-  <text class="ui h1" x="80" y="240">what a real rep looks like</text>
-  <text class="ui h1" x="80" y="290">for any calisthenics move.</text>
-  <text class="ui sub" x="80" y="338">Browser-only skeletal tracking. No video kept. An open library for movement.</text>
+  <text class="ui h1" x="80" y="78">Teach the machine</text>
+  <text class="ui h1" x="80" y="128">what a real rep looks like</text>
+  <text class="ui h1" x="80" y="178">for any calisthenics move.</text>
+  <text class="ui" x="80" y="302" font-size="18" font-weight="600" fill="#4ade80">Record your movement in the live demo ↓</text>
+  <text class="ui sub" x="80" y="330">Help build an open library of movement.</text>
+  <text class="ui sub" x="80" y="416">Browser-only skeletal tracking. No video kept. An open library for movement.</text>
 
   <g transform="translate(906, 372)">
     <ellipse cx="0" cy="-130" rx="145" ry="185" fill="url(#glowPose)"/>
     <line x1="-165" y1="0" x2="165" y2="0" stroke="url(#fadeFloor)" stroke-width="1.6"/>
 
     <!-- ================= HANDSTAND PUSH-UP ================= -->
-    <g opacity="1">
+    <g opacity="0">
       <animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.23077;0.25;0.98077;1" dur="26s" repeatCount="indefinite"/>
       <g filter="url(#softGlow)">
-        <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
-          <path d="M-38 -92 L-44 -46 L-34 0">
-            <animate attributeName="d" values="M-38 -92 L-44 -46 L-34 0; M-38 -46 L-64 -26 L-34 0; M-38 -92 L-44 -46 L-34 0"
-                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </path>
-          <path d="M38 -92 L44 -46 L34 0">
-            <animate attributeName="d" values="M38 -92 L44 -46 L34 0; M38 -46 L64 -26 L34 0; M38 -92 L44 -46 L34 0"
-                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </path>
-        </g>
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="0 0; 0 46; 0 0" keyTimes="0;0.5;1"
-                            dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          <circle cx="0" cy="-70" r="10" fill="#f59e0b"/>
-          <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
-            <path d="M-40 -90 L40 -90"/>
-            <path d="M0 -94 L0 -172"/>
-            <path d="M-18 -176 L18 -176"/>
-            <path d="M-18 -176 L-33 -234 L-25 -286 L-29 -296"/>
-            <path d="M18 -176 L33 -234 L25 -286 L29 -296"/>
-          </g>
-          <g fill="#fbbf24">
-            <circle cx="-40" cy="-90" r="5.2"/>
-            <circle cx="40" cy="-90" r="5.2"/>
-            <circle cx="-18" cy="-176" r="5.2"/>
-            <circle cx="18" cy="-176" r="5.2"/>
-            <circle cx="-33" cy="-234" r="4.8"/>
-            <circle cx="33" cy="-234" r="4.8"/>
-            <circle cx="-25" cy="-286" r="4"/>
-            <circle cx="25" cy="-286" r="4"/>
-          </g>
+        <path d="M-18 -56 Q0 -64 18 -56 L11 -122 Q0 -128 -11 -122 Z" fill="#4ade80" fill-opacity="0.17"/>
+        <g fill="none" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-18 -56 L-26 -27 L-21 0 M18 -56 L26 -27 L21 0"/>
+          <path d="M-18 -56 L-11 -122 L-14 -152 L-18 -192 M18 -56 L11 -122 L14 -152 L18 -192 M-18 -56 L18 -56 M-11 -122 L11 -122 M0 -44 L0 -56"/>
         </g>
         <g fill="#fbbf24">
-          <circle cx="-44" cy="-46" r="5.2">
-            <animate attributeName="cx" values="-44;-64;-44" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-            <animate attributeName="cy" values="-46;-26;-46" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </circle>
-          <circle cx="44" cy="-46" r="5.2">
-            <animate attributeName="cx" values="44;64;44" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-            <animate attributeName="cy" values="-46;-26;-46" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </circle>
-          <circle cx="-34" cy="0" r="5"/>
-          <circle cx="34" cy="0" r="5"/>
+          <circle cx="-18" cy="-56" r="3.3"/><circle cx="18" cy="-56" r="3.3"/>
+          <circle cx="-26" cy="-27" r="3.3"/><circle cx="26" cy="-27" r="3.3"/>
+          <circle cx="-21" cy="0" r="3.3"/><circle cx="21" cy="0" r="3.3"/>
+          <circle cx="-11" cy="-122" r="3.3"/><circle cx="11" cy="-122" r="3.3"/>
         </g>
+        <circle cx="0" cy="-34" r="8" fill="#f59e0b"/>
       </g>
     </g>
 
     <!-- ================= PULL-UP ================= -->
     <g opacity="0">
       <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.23077;0.25;0.5;0.51923;1" dur="26s" repeatCount="indefinite"/>
-      <g filter="url(#softGlow)">
-        <line x1="-102" y1="-340" x2="102" y2="-340" stroke="#9aa2b0" stroke-opacity="0.34" stroke-width="6" stroke-linecap="round"/>
-        <line x1="-102" y1="-342.5" x2="102" y2="-342.5" stroke="#ffffff" stroke-opacity="0.10" stroke-width="6" stroke-linecap="round"/>
-        <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
-          <path d="M-40 -338 L-52 -284 L-42 -228">
-            <animate attributeName="d" values="M-40 -338 L-52 -284 L-42 -228; M-40 -338 L-90 -314 L-42 -288; M-40 -338 L-52 -284 L-42 -228"
-                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </path>
-          <path d="M40 -338 L52 -284 L42 -228">
-            <animate attributeName="d" values="M40 -338 L52 -284 L42 -228; M40 -338 L90 -314 L42 -288; M40 -338 L52 -284 L42 -228"
-                     keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </path>
+      <g transform="translate(0,-30)" filter="url(#softGlow)">
+        <line x1="-72" y1="-207" x2="72" y2="-207" stroke="#cbd5e1" stroke-opacity="0.58" stroke-width="5" stroke-linecap="round"/>
+        <line x1="-72" y1="-207" x2="-72" y2="-184" stroke="#cbd5e1" stroke-opacity="0.25" stroke-width="3"/>
+        <line x1="72" y1="-207" x2="72" y2="-184" stroke="#cbd5e1" stroke-opacity="0.25" stroke-width="3"/>
+        <path d="M-19 -110 Q0 -105 19 -110 L10 -72 Q0 -68 -10 -72 Z" fill="#4ade80" fill-opacity="0.17"/>
+        <g fill="none" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-22 -207 L-25 -158 L-19 -110 M22 -207 L25 -158 L19 -110 M-19 -110 L-10 -72 M19 -110 L10 -72 M-19 -110 L19 -110 M-10 -72 L10 -72 M-10 -72 L-19 -38 L-17 -18 M10 -72 L19 -38 L17 -18"/>
         </g>
-        <g>
-          <animateTransform attributeName="transform" type="translate" values="0 0; 0 -60; 0 0" keyTimes="0;0.5;1"
-                            dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          <circle cx="0" cy="-250" r="10" fill="#f59e0b"/>
-          <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
-            <path d="M-42 -228 L42 -228"/>
-            <path d="M0 -228 L0 -128"/>
-            <path d="M-16 -132 L16 -132"/>
-            <path d="M-16 -132 L-22 -78 L-18 -30 L-22 -20"/>
-            <path d="M16 -132 L22 -78 L18 -30 L22 -20"/>
-          </g>
-          <g fill="#fbbf24">
-            <circle cx="-42" cy="-228" r="5.2"/>
-            <circle cx="42" cy="-228" r="5.2"/>
-            <circle cx="-16" cy="-132" r="5.2"/>
-            <circle cx="16" cy="-132" r="5.2"/>
-            <circle cx="-22" cy="-78" r="4.8"/>
-            <circle cx="22" cy="-78" r="4.8"/>
-            <circle cx="-18" cy="-30" r="4"/>
-            <circle cx="18" cy="-30" r="4"/>
-          </g>
-        </g>
-        <g fill="#fbbf24">
-          <circle cx="-52" cy="-284" r="5">
-            <animate attributeName="cx" values="-52;-90;-52" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-            <animate attributeName="cy" values="-284;-314;-284" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </circle>
-          <circle cx="52" cy="-284" r="5">
-            <animate attributeName="cx" values="52;90;52" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-            <animate attributeName="cy" values="-284;-314;-284" keyTimes="0;0.5;1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.18 1; 0.42 0 0.18 1"/>
-          </circle>
-          <circle cx="-40" cy="-338" r="4.6"/>
-          <circle cx="40" cy="-338" r="4.6"/>
-        </g>
+        <circle cx="0" cy="-130" r="8" fill="#f59e0b"/>
+        <g fill="#fbbf24"><circle cx="-19" cy="-110" r="3.3"/><circle cx="19" cy="-110" r="3.3"/><circle cx="-10" cy="-72" r="3.3"/><circle cx="10" cy="-72" r="3.3"/></g>
       </g>
     </g>
 
     <!-- ================= PISTOL SQUAT ================= -->
     <g opacity="0">
       <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.5;0.51923;0.75;0.76923;1" dur="26s" repeatCount="indefinite"/>
-      <g filter="url(#softGlow)">
-        <g fill="none" stroke="#4ade80" stroke-width="5" stroke-linecap="round">
-          <path d="M2 -164 L4 -80 L0 0">
-            <animate attributeName="d" values="M2 -164 L4 -80 L0 0; M2 -98 L66 -44 L0 0; M2 -164 L4 -80 L0 0"
-                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
-                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </path>
-          <path d="M2 -164 L14 -240">
-            <animate attributeName="d" values="M2 -164 L14 -240; M2 -98 L40 -158; M2 -164 L14 -240"
-                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
-                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </path>
-          <path d="M2 -164 L84 -128 L154 -98 L166 -100">
-            <animate attributeName="d" values="M2 -164 L84 -128 L154 -98 L166 -100; M2 -98 L84 -96 L158 -88 L168 -92; M2 -164 L84 -128 L154 -98 L166 -100"
-                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
-                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </path>
-          <path d="M14 -240 L50 -244 L86 -232">
-            <animate attributeName="d" values="M14 -240 L50 -244 L86 -232; M40 -158 L76 -160 L110 -148; M14 -240 L50 -244 L86 -232"
-                     keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite"
-                     calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </path>
+      <g transform="translate(-14,0)" filter="url(#softGlow)">
+        <path d="M-8 -121 Q0 -128 12 -119 L6 -79 Q-1 -74 -9 -78 Z" fill="#4ade80" fill-opacity="0.2"/>
+        <g fill="none" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 -120 L-6 -78 L30 -42 L0 -5 M-6 -78 L40 -88 L88 -92 M0 -120 L30 -111 L56 -104 M0 -148 L0 -120 M-7 0 L18 0"/>
         </g>
-        <circle cx="26" cy="-260" r="10" fill="#f59e0b">
-          <animate attributeName="cx" values="26;54;26" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          <animate attributeName="cy" values="-260;-177;-260" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-        </circle>
+        <circle cx="3" cy="-156" r="8" fill="#f59e0b"/>
         <g fill="#fbbf24">
-          <circle cx="2" cy="-164" r="5.2">
-            <animate attributeName="cy" values="-164;-98;-164" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="4" cy="-80" r="4.8">
-            <animate attributeName="cx" values="4;66;4" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-            <animate attributeName="cy" values="-80;-44;-80" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="0" cy="0" r="4.6"/>
-          <circle cx="84" cy="-128" r="4.8">
-            <animate attributeName="cy" values="-128;-96;-128" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="154" cy="-98" r="4">
-            <animate attributeName="cy" values="-98;-88;-98" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="14" cy="-240" r="5.2">
-            <animate attributeName="cx" values="14;40;14" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-            <animate attributeName="cy" values="-240;-158;-240" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="50" cy="-244" r="5">
-            <animate attributeName="cx" values="50;76;50" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-            <animate attributeName="cy" values="-244;-160;-244" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="86" cy="-232" r="4.4">
-            <animate attributeName="cx" values="86;110;86" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-            <animate attributeName="cy" values="-232;-148;-232" keyTimes="0;0.5;1" dur="2.2s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
+          <circle cx="0" cy="-120" r="3.3"/><circle cx="-6" cy="-78" r="3.3"/>
+          <circle cx="30" cy="-42" r="3.3"/><circle cx="0" cy="-5" r="3.3"/>
+          <circle cx="40" cy="-88" r="3.3"/><circle cx="88" cy="-92" r="3.3"/>
         </g>
       </g>
     </g>
@@ -228,28 +114,17 @@
     <!-- ================= L-SIT ================= -->
     <g opacity="0">
       <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.75;0.76923;0.98077;1" dur="26s" repeatCount="indefinite"/>
-      <g filter="url(#softGlow)" transform="translate(-95,0) scale(1.5)">
-        <line x1="2" y1="-60" x2="2" y2="0" stroke="#8b93a1" stroke-opacity="0.38" stroke-width="3.4" stroke-linecap="round"/>
-        <line x1="-8" y1="0" x2="12" y2="0" stroke="#8b93a1" stroke-opacity="0.38" stroke-width="3.4" stroke-linecap="round"/>
-        <path d="M10 -172 L6 -116 L2 -60" fill="none" stroke="#4ade80" stroke-width="3.4" stroke-linecap="round"/>
-        <path d="M10 -172 L-8 -70" fill="none" stroke="#4ade80" stroke-width="3.4" stroke-linecap="round"/>
-        <path d="M-8 -70 L78 -68 L152 -64 L164 -62" fill="none" stroke="#4ade80" stroke-width="3.4" stroke-linecap="round">
-          <animate attributeName="d" values="M-8 -70 L78 -68 L152 -64 L164 -62; M-8 -70 L77 -100 L150 -124 L162 -130; M-8 -70 L78 -68 L152 -64 L164 -62"
-                   keyTimes="0;0.5;1" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-        </path>
-        <circle cx="16" cy="-188" r="7" fill="#f59e0b"/>
-        <g fill="#fbbf24">
-          <circle cx="10" cy="-172" r="3.6"/>
-          <circle cx="6" cy="-116" r="3.4"/>
-          <circle cx="2" cy="-60" r="3.4"/>
-          <circle cx="-8" cy="-70" r="3.6"/>
-          <circle cx="78" cy="-68" r="3.4">
-            <animate attributeName="cy" values="-68;-100;-68" keyTimes="0;0.5;1" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
-          <circle cx="152" cy="-64" r="2.8">
-            <animate attributeName="cy" values="-64;-124;-64" keyTimes="0;0.5;1" dur="3.4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.2 1; 0.45 0 0.2 1"/>
-          </circle>
+      <g filter="url(#softGlow)">
+        <g fill="none" stroke="#cbd5e1" stroke-width="4" stroke-opacity="0.42" stroke-linecap="round">
+          <path d="M-30 -70 L-30 0 M30 -70 L30 0"/>
+          <path d="M-52 -70 L-12 -70 M12 -70 L52 -70" stroke-width="6"/>
         </g>
+        <path d="M-14 -142 Q0 -151 14 -142 L8 -72 Q0 -67 -8 -72 Z" fill="#4ade80" fill-opacity="0.2"/>
+        <g fill="none" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M-14 -142 L-21 -105 L-30 -70 M14 -142 L21 -105 L30 -70 M-14 -142 L0 -72 L48 -72 L112 -72 M14 -142 L0 -68 L48 -68 L112 -68 M0 -164 L0 -142 M-14 -142 L14 -142"/>
+        </g>
+        <g fill="#fbbf24"><circle cx="-14" cy="-142" r="3.3"/><circle cx="14" cy="-142" r="3.3"/><circle cx="-21" cy="-105" r="3.3"/><circle cx="21" cy="-105" r="3.3"/><circle cx="-30" cy="-70" r="3.3"/><circle cx="30" cy="-70" r="3.3"/></g>
+        <circle cx="0" cy="-178" r="8" fill="#f59e0b"/>
       </g>
     </g>
 
